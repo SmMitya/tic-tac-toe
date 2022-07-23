@@ -34,7 +34,7 @@ function setMarkArea(event) {
     gameState[getDataCell] = turnPlayer;
     event.target.textContent = turnPlayer;
     playerWin();
-    handlePlayerChange(turnPlayer);
+    
   }
 }
 
@@ -53,14 +53,17 @@ function playerWin() {
     if (a === b && b === c) {
       gameActivity = false;
       statusGame.textContent = `Player ${turnPlayer} has won!`;
-      break;
+      return;
     }
   }
   
   if (!gameState.includes('')) {
     gameActivity = false;
     statusGame.textContent = `Game ended in a draw!`;
+    return;
   }
+
+  handlePlayerChange(turnPlayer);
 }
 
 function clearArea() {
